@@ -1,4 +1,4 @@
-# swift_image
+# flutter_glide
 
 A Flutter image-loading package inspired by **Glide** and **Picasso** from Android.
 
@@ -22,8 +22,8 @@ local file path — and renders it consistently with a single widget API.
 | ✅ Error fallback | Custom `errorWidget` or default broken-image icon |
 | ✅ Shimmer placeholder | Customisable colours; also available standalone |
 | ✅ Initials avatar | Auto-generated from `name` when image is unavailable |
-| ✅ Hero / banner | `SwiftImageBanner` — aspect-ratio image with gradient overlay and caption |
-| ✅ Image grid | `SwiftImageGrid` — responsive fixed-column grid |
+| ✅ Hero / banner | `GlideBanner` — aspect-ratio image with gradient overlay and caption |
+| ✅ Image grid | `GlideGrid` — responsive fixed-column grid |
 
 ---
 
@@ -31,10 +31,10 @@ local file path — and renders it consistently with a single widget API.
 
 | Widget | Glide equivalent | Description |
 |---|---|---|
-| `SwiftImage` | `Glide.with().load().into()` | Rectangular image — all source types |
-| `SwiftImageCircle` | `.circleCrop()` | Circular avatar with initials fallback |
-| `SwiftImageBanner` | — | Full-width hero image with gradient overlay & caption |
-| `SwiftImageGrid` | — | Responsive multi-column image grid |
+| `GlideImage` | `Glide.with().load().into()` | Rectangular image — all source types |
+| `GlideCircle` | `.circleCrop()` | Circular avatar with initials fallback |
+| `GlideBanner` | — | Full-width hero image with gradient overlay & caption |
+| `GlideGrid` | — | Responsive multi-column image grid |
 | `InitialsAvatar` | — | Standalone initials box (colour + text) |
 | `ShimmerPlaceholder` | `.placeholder()` | Standalone shimmer loading box |
 
@@ -44,29 +44,29 @@ local file path — and renders it consistently with a single widget API.
 
 ```yaml
 dependencies:
-  swift_image: ^0.1.0
+  flutter_glide: ^0.1.0
 ```
 
 ```dart
-import 'package:swift_image/swift_image.dart';
+import 'package:flutter_glide/flutter_glide.dart';
 ```
 
 ---
 
 ## Usage
 
-### SwiftImage — rectangular image
+### GlideImage — rectangular image
 
 ```dart
 // Network — cached automatically, shimmer while loading
-SwiftImage(
+GlideImage(
   'https://example.com/photo.jpg',
   width: double.infinity,
   height: 200,
 )
 
 // Rounded corners
-SwiftImage(
+GlideImage(
   'https://example.com/photo.jpg',
   width: double.infinity,
   height: 180,
@@ -74,17 +74,17 @@ SwiftImage(
 )
 
 // Colour tint (tint is clipped inside borderRadius — no bleed)
-SwiftImage(
+GlideImage(
   'https://example.com/photo.jpg',
   width: double.infinity,
   height: 160,
   borderRadius: BorderRadius.circular(12),
-  color: Colors.teal.withOpacity(0.4),
+  color: Colors.teal.withValues(alpha: 0.4),
   colorBlendMode: BlendMode.multiply,
 )
 
 // Tappable
-SwiftImage(
+GlideImage(
   'https://example.com/photo.jpg',
   width: double.infinity,
   height: 140,
@@ -92,26 +92,26 @@ SwiftImage(
 )
 
 // Asset (PNG / JPG / WebP / GIF)
-SwiftImage('assets/images/banner.png', width: double.infinity, height: 180)
+GlideImage('assets/images/banner.png', width: double.infinity, height: 180)
 
 // SVG asset
-SwiftImage('assets/icons/logo.svg', width: 64, height: 64)
+GlideImage('assets/icons/logo.svg', width: 64, height: 64)
 
 // Local file — absolute path
-SwiftImage('/data/user/0/com.example.app/cache/photo.jpg', width: 100, height: 100)
+GlideImage('/data/user/0/com.example.app/cache/photo.jpg', width: 100, height: 100)
 
 // Local file — file:// URI (e.g. from image_picker on iOS)
-SwiftImage('file:///var/mobile/Containers/.../picked.jpg', width: 100, height: 100)
+GlideImage('file:///var/mobile/Containers/.../picked.jpg', width: 100, height: 100)
 
 // Custom placeholder and error widget
-SwiftImage(
+GlideImage(
   url,
   placeholder: const Center(child: CircularProgressIndicator()),
   errorWidget: const Icon(Icons.warning, color: Colors.red),
 )
 
 // Memory-cache hints — reduces RAM usage for thumbnail lists
-SwiftImage(
+GlideImage(
   url,
   width: 80,
   height: 80,
@@ -120,7 +120,7 @@ SwiftImage(
 )
 
 // Custom HTTP headers (auth tokens, etc.)
-SwiftImage(
+GlideImage(
   url,
   httpHeaders: {'Authorization': 'Bearer $token'},
 )
@@ -128,17 +128,17 @@ SwiftImage(
 
 ---
 
-### SwiftImageBanner — hero / banner image
+### GlideBanner — hero / banner image
 
 ```dart
 // Basic 16:9 banner
-SwiftImageBanner(
+GlideBanner(
   imageUrl: 'https://example.com/hero.jpg',
   aspectRatio: 16 / 9,
 )
 
 // Gradient overlay + caption + rounded corners + tap
-SwiftImageBanner(
+GlideBanner(
   imageUrl: 'https://example.com/hero.jpg',
   aspectRatio: 16 / 9,
   borderRadius: BorderRadius.circular(14),
@@ -153,7 +153,7 @@ SwiftImageBanner(
 )
 
 // Solid colour overlay
-SwiftImageBanner(
+GlideBanner(
   imageUrl: url,
   aspectRatio: 4 / 3,
   overlayColor: Colors.black38,
@@ -161,16 +161,16 @@ SwiftImageBanner(
 )
 
 // Cinematic 21:9
-SwiftImageBanner(imageUrl: url, aspectRatio: 21 / 9)
+GlideBanner(imageUrl: url, aspectRatio: 21 / 9)
 ```
 
 ---
 
-### SwiftImageGrid — image grid
+### GlideGrid — image grid
 
 ```dart
 // 3-column square grid with tap
-SwiftImageGrid(
+GlideGrid(
   imageUrls: [
     'https://example.com/a.jpg',
     'https://example.com/b.jpg',
@@ -183,7 +183,7 @@ SwiftImageGrid(
 )
 
 // 2-column landscape grid (4:3 cells)
-SwiftImageGrid(
+GlideGrid(
   imageUrls: urls,
   crossAxisCount: 2,
   spacing: 6,
@@ -192,7 +192,7 @@ SwiftImageGrid(
 )
 
 // Custom error widget per cell
-SwiftImageGrid(
+GlideGrid(
   imageUrls: urls,
   errorWidget: const Icon(Icons.image_not_supported),
 )
@@ -200,18 +200,18 @@ SwiftImageGrid(
 
 ---
 
-### SwiftImageCircle — circular avatar
+### GlideCircle — circular avatar
 
 ```dart
 // Network image
-SwiftImageCircle(
+GlideCircle(
   imageUrl: 'https://example.com/avatar.jpg',
   radius: 32,
   name: 'Siddharth Rathod',
 )
 
 // Empty URL → initials fallback ("SR")
-SwiftImageCircle(
+GlideCircle(
   imageUrl: '',
   radius: 40,
   name: 'Siddharth Rathod',
@@ -220,14 +220,14 @@ SwiftImageCircle(
 )
 
 // Broken URL → falls back to initials
-SwiftImageCircle(
+GlideCircle(
   imageUrl: 'https://broken.url/avatar.jpg',
   radius: 40,
   name: 'John Doe',
 )
 
 // Border + tap
-SwiftImageCircle(
+GlideCircle(
   imageUrl: avatarUrl,
   radius: 28,
   name: 'Ali M',
@@ -237,7 +237,7 @@ SwiftImageCircle(
 )
 
 // Custom error widget (overrides initials)
-SwiftImageCircle(
+GlideCircle(
   imageUrl: url,
   radius: 36,
   name: 'Sam Lee',
@@ -274,7 +274,7 @@ ShimmerPlaceholder(
 
 ## API Reference
 
-### `SwiftImage`
+### `GlideImage`
 
 | Parameter | Type | Default | Description |
 |---|---|---|---|
@@ -294,11 +294,11 @@ ShimmerPlaceholder(
 | `maxCacheWidth` | `int?` | `null` | Max memory-cache pixel width (network only) |
 | `maxCacheHeight` | `int?` | `null` | Max memory-cache pixel height (network only) |
 
-### `SwiftImageBanner`
+### `GlideBanner`
 
 | Parameter | Type | Default | Description |
 |---|---|---|---|
-| `imageUrl` *(required)* | `String` | — | Image source (same rules as `SwiftImage`) |
+| `imageUrl` *(required)* | `String` | — | Image source (same rules as `GlideImage`) |
 | `aspectRatio` | `double` | `16/9` | Width ÷ height ratio |
 | `overlayGradient` | `Gradient?` | `null` | Gradient painted over the image |
 | `overlayColor` | `Color?` | `null` | Solid colour overlay (alternative to gradient) |
@@ -312,7 +312,7 @@ ShimmerPlaceholder(
 | `shimmerBaseColor` | `Color` | `#E0E0E0` | Shimmer base colour |
 | `shimmerHighlightColor` | `Color` | `#F5F5F5` | Shimmer highlight colour |
 
-### `SwiftImageGrid`
+### `GlideGrid`
 
 | Parameter | Type | Default | Description |
 |---|---|---|---|
@@ -328,7 +328,7 @@ ShimmerPlaceholder(
 | `shimmerBaseColor` | `Color` | `#E0E0E0` | Shimmer base colour |
 | `shimmerHighlightColor` | `Color` | `#F5F5F5` | Shimmer highlight colour |
 
-### `SwiftImageCircle`
+### `GlideCircle`
 
 | Parameter | Type | Default | Description |
 |---|---|---|---|
