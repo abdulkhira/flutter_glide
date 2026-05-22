@@ -14,13 +14,13 @@ import 'shimmer_placeholder.dart';
 /// Inspired by Glide/Picasso circular transformations.
 ///
 /// ```dart
-/// SwiftImageCircle(
+/// GlideCircle(
 ///   imageUrl: 'https://example.com/avatar.jpg',
 ///   radius: 32,
 ///   name: 'Siddharth Rathod',
 /// )
 /// ```
-class SwiftImageCircle extends StatelessWidget {
+class GlideCircle extends StatelessWidget {
   /// The image source — HTTP URL, asset path, SVG asset path, or file path.
   /// Pass an empty string to show the initials fallback immediately.
   final String imageUrl;
@@ -58,7 +58,7 @@ class SwiftImageCircle extends StatelessWidget {
   /// Callback fired when the avatar is tapped.
   final VoidCallback? onTap;
 
-  const SwiftImageCircle({
+  const GlideCircle({
     super.key,
     required this.imageUrl,
     required this.radius,

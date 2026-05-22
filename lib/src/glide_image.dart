@@ -17,19 +17,19 @@ import 'shimmer_placeholder.dart';
 ///
 /// ```dart
 /// // Network
-/// SwiftImage('https://example.com/photo.jpg', width: 300, height: 200)
+/// GlideImage('https://example.com/photo.jpg', width: 300, height: 200)
 ///
 /// // Rounded corners
-/// SwiftImage('https://example.com/photo.jpg',
+/// GlideImage('https://example.com/photo.jpg',
 ///   width: 200, height: 150,
 ///   borderRadius: BorderRadius.circular(16))
 ///
 /// // Tappable
-/// SwiftImage('assets/images/banner.png',
+/// GlideImage('assets/images/banner.png',
 ///   width: double.infinity, height: 180,
 ///   onTap: () => print('tapped'))
 /// ```
-class SwiftImage extends StatelessWidget {
+class GlideImage extends StatelessWidget {
   /// The image source — HTTP URL, asset path, SVG asset path, or file path.
   final String imageUrl;
 
@@ -72,7 +72,7 @@ class SwiftImage extends StatelessWidget {
   /// Hint to the cache for max pixel height (network images only).
   final int? maxCacheHeight;
 
-  const SwiftImage(
+  const GlideImage(
     this.imageUrl, {
     super.key,
     this.width,

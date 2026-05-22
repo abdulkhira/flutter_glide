@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  swift_image:
+  flutter_glide:
     path: ../
 
 dev_dependencies:

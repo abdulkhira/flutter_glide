@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 
-import 'swift_image.dart';
+import 'glide_image.dart';
 
 /// A full-width hero/banner image with an optional overlay and caption.
 ///
 /// Useful for article headers, product hero shots, or carousel items.
 ///
 /// ```dart
-/// SwiftImageBanner(
+/// GlideBanner(
 ///   imageUrl: 'https://example.com/hero.jpg',
 ///   aspectRatio: 16 / 9,
 ///   caption: 'Mountain sunrise',
 /// )
 ///
 /// // With gradient overlay
-/// SwiftImageBanner(
+/// GlideBanner(
 ///   imageUrl: 'https://example.com/hero.jpg',
 ///   aspectRatio: 21 / 9,
 ///   overlayGradient: LinearGradient(
@@ -26,7 +26,7 @@ import 'swift_image.dart';
 ///   captionStyle: TextStyle(color: Colors.white, fontSize: 18),
 /// )
 /// ```
-class SwiftImageBanner extends StatelessWidget {
+class GlideBanner extends StatelessWidget {
   /// The image source — same resolution rules as [SwiftImage].
   final String imageUrl;
 
@@ -63,7 +63,7 @@ class SwiftImageBanner extends StatelessWidget {
   final Color shimmerBaseColor;
   final Color shimmerHighlightColor;
 
-  const SwiftImageBanner({
+  const GlideBanner({
     super.key,
     required this.imageUrl,
     this.aspectRatio = 16 / 9,
@@ -87,7 +87,7 @@ class SwiftImageBanner extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          SwiftImage(
+          GlideImage(
             imageUrl,
             width: double.infinity,
             fit: BoxFit.cover,

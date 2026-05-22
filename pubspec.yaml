@@ -1,13 +1,13 @@
-name: swift_image
+name: flutter_glide
 description: >
   Flutter image loading inspired by Glide & Picasso. Auto-detects network, asset,
-  SVG, and file sources. Ships SwiftImage, SwiftImageCircle, SwiftImageBanner,
-  and SwiftImageGrid with shimmer placeholders, initials avatars, rounded corners,
+  SVG, and file sources. Ships GlideImage, GlideCircle, GlideBanner,
+  and GlideGrid with shimmer placeholders, initials avatars, rounded corners,
   colour tints, tap callbacks, and memory-cache hints — zero config required.
 version: 0.1.0
-homepage: https://github.com/abdulkhira/swift_image
-repository: https://github.com/abdulkhira/swift_image
-issue_tracker: https://github.com/abdulkhira/swift_image/issues
+homepage: https://github.com/abdulkhira/flutter_glide
+repository: https://github.com/abdulkhira/flutter_glide
+issue_tracker: https://github.com/abdulkhira/flutter_glide/issues
 
 environment:
   sdk: ">=3.0.0 <4.0.0"

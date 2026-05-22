@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:swift_image/swift_image.dart';
+import 'package:flutter_glide/flutter_glide.dart';
 
-void main() => runApp(const SwiftImageExampleApp());
+void main() => runApp(const FlutterGlideExampleApp());
 
-class SwiftImageExampleApp extends StatelessWidget {
-  const SwiftImageExampleApp({super.key});
+class FlutterGlideExampleApp extends StatelessWidget {
+  const FlutterGlideExampleApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'SwiftImage Demo',
+      title: 'flutter_glide Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(colorSchemeSeed: Colors.teal, useMaterial3: true),
       home: const _HomePage(),
@@ -38,15 +38,15 @@ class _HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('SwiftImage Demo')),
+      appBar: AppBar(title: const Text('flutter_glide Demo')),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // ── 1. Network image (cached + shimmer) ──────────────────────
-            _section('1. SwiftImage — Network (cached + shimmer)'),
-            const SwiftImage(
+            _section('1. GlideImage — Network (cached + shimmer)'),
+            const GlideImage(
               _portrait,
               width: double.infinity,
               height: 200,
@@ -55,8 +55,8 @@ class _HomePage extends StatelessWidget {
             const SizedBox(height: 20),
 
             // ── 2. Rounded corners ───────────────────────────────────────
-            _section('2. SwiftImage — Rounded corners'),
-            SwiftImage(
+            _section('2. GlideImage — Rounded corners'),
+            GlideImage(
               _landscape,
               width: double.infinity,
               height: 180,
@@ -65,20 +65,20 @@ class _HomePage extends StatelessWidget {
             const SizedBox(height: 20),
 
             // ── 3. Colour tint ───────────────────────────────────────────
-            _section('3. SwiftImage — Colour tint (multiply)'),
-            SwiftImage(
+            _section('3. GlideImage — Colour tint (multiply)'),
+            GlideImage(
               _landscape,
               width: double.infinity,
               height: 160,
               borderRadius: BorderRadius.circular(12),
-              color: Colors.teal.withOpacity(0.45),
+              color: Colors.teal.withValues(alpha: 0.45),
               colorBlendMode: BlendMode.multiply,
             ),
             const SizedBox(height: 20),
 
             // ── 4. Tappable image ────────────────────────────────────────
-            _section('4. SwiftImage — Tappable'),
-            SwiftImage(
+            _section('4. GlideImage — Tappable'),
+            GlideImage(
               _portrait,
               width: double.infinity,
               height: 140,
@@ -91,8 +91,8 @@ class _HomePage extends StatelessWidget {
             const SizedBox(height: 20),
 
             // ── 5. Broken URL (error fallback) ───────────────────────────
-            _section('5. SwiftImage — Broken URL (error fallback)'),
-            SwiftImage(
+            _section('5. GlideImage — Broken URL (error fallback)'),
+            GlideImage(
               _broken,
               width: double.infinity,
               height: 100,
@@ -101,8 +101,8 @@ class _HomePage extends StatelessWidget {
             const SizedBox(height: 20),
 
             // ── 6. SwiftImageBanner (16:9) ───────────────────────────────
-            _section('6. SwiftImageBanner — 16:9 with gradient + caption'),
-            SwiftImageBanner(
+            _section('6. GlideBanner — 16:9 with gradient + caption'),
+            GlideBanner(
               imageUrl: _landscape,
               aspectRatio: 16 / 9,
               borderRadius: BorderRadius.circular(14),
@@ -119,18 +119,18 @@ class _HomePage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // ── 7. SwiftImageBanner (21:9 cinematic) ────────────────────
-            _section('7. SwiftImageBanner — 21:9 cinematic, no caption'),
-            SwiftImageBanner(
+            // ── 7. GlideBanner (21:9 cinematic) ────────────────────
+            _section('7. GlideBanner — 21:9 cinematic, no caption'),
+            GlideBanner(
               imageUrl: _landscape,
               aspectRatio: 21 / 9,
               borderRadius: BorderRadius.circular(14),
             ),
             const SizedBox(height: 20),
 
-            // ── 8. SwiftImageGrid ─────────────────────────────────────────
-            _section('8. SwiftImageGrid — 3-column square grid'),
-            SwiftImageGrid(
+            // ── 8. GlideGrid ───────────────────────────────────────────
+            _section('8. GlideGrid — 3-column square grid'),
+            GlideGrid(
               imageUrls: _gridUrls,
               crossAxisCount: 3,
               spacing: 4,
@@ -142,9 +142,9 @@ class _HomePage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // ── 9. SwiftImageGrid — 2-column landscape ───────────────────
-            _section('9. SwiftImageGrid — 2-column landscape (4:3)'),
-            SwiftImageGrid(
+            // ── 9. GlideGrid — 2-column landscape ──────────────────────
+            _section('9. GlideGrid — 2-column landscape (4:3)'),
+            GlideGrid(
               imageUrls: _gridUrls.take(4).toList(),
               crossAxisCount: 2,
               spacing: 6,
@@ -153,24 +153,24 @@ class _HomePage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // ── 10. SwiftImageCircle — Network avatars ───────────────────
-            _section('10. SwiftImageCircle — Network avatars'),
+            // ── 10. GlideCircle — Network avatars ───────────────────────
+            _section('10. GlideCircle — Network avatars'),
             Row(
               spacing: 16,
               children: [
-                const SwiftImageCircle(
+                const GlideCircle(
                   imageUrl: _portrait,
                   radius: 40,
                   name: 'Siddharth Rathod',
                 ),
-                const SwiftImageCircle(
+                const GlideCircle(
                   imageUrl: _portrait,
                   radius: 32,
                   name: 'Ali Murtaza',
                   borderWidth: 2,
                   borderColor: Colors.teal,
                 ),
-                SwiftImageCircle(
+                GlideCircle(
                   imageUrl: _portrait,
                   radius: 36,
                   name: 'Sam Lee',
@@ -183,33 +183,33 @@ class _HomePage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
 
-            // ── 11. SwiftImageCircle — Initials fallback ─────────────────
-            _section('11. SwiftImageCircle — Initials fallback'),
+            // ── 11. GlideCircle — Initials fallback ─────────────────────
+            _section('11. GlideCircle — Initials fallback'),
             const Row(
               spacing: 12,
               children: [
-                SwiftImageCircle(
+                GlideCircle(
                   imageUrl: '',
                   radius: 36,
                   name: 'Siddharth Rathod',
                   initialsBackgroundColor: Color(0xFFD6E9F5),
                   initialsTextColor: Color(0xFF05678D),
                 ),
-                SwiftImageCircle(
+                GlideCircle(
                   imageUrl: '',
                   radius: 36,
                   name: 'Ali Murtaza',
                   initialsBackgroundColor: Color(0xFFE8F5E9),
                   initialsTextColor: Colors.green,
                 ),
-                SwiftImageCircle(
+                GlideCircle(
                   imageUrl: '',
                   radius: 36,
                   name: 'Zara',
                   initialsBackgroundColor: Color(0xFFFCE4EC),
                   initialsTextColor: Colors.pink,
                 ),
-                SwiftImageCircle(
+                GlideCircle(
                   imageUrl: _broken,
                   radius: 36,
                   name: 'John Doe',

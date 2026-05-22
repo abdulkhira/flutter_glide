@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-import 'swift_image.dart';
+import 'glide_image.dart';
 
 /// A responsive image grid that renders a list of image URLs in a fixed-column
 /// grid layout, with uniform spacing and optional tap callbacks.
 ///
 /// ```dart
-/// SwiftImageGrid(
+/// GlideGrid(
 ///   imageUrls: [
 ///     'https://example.com/a.jpg',
 ///     'https://example.com/b.jpg',
@@ -24,7 +24,7 @@ import 'swift_image.dart';
 ///   onTap: (index) => Navigator.push(...),
 /// )
 /// ```
-class SwiftImageGrid extends StatelessWidget {
+class GlideGrid extends StatelessWidget {
   /// List of image URLs/paths. Supports the same sources as [SwiftImage].
   final List<String> imageUrls;
 
@@ -55,7 +55,7 @@ class SwiftImageGrid extends StatelessWidget {
   final Color shimmerBaseColor;
   final Color shimmerHighlightColor;
 
-  const SwiftImageGrid({
+  const GlideGrid({
     super.key,
     required this.imageUrls,
     this.crossAxisCount = 3,
@@ -83,7 +83,7 @@ class SwiftImageGrid extends StatelessWidget {
       ),
       itemCount: imageUrls.length,
       itemBuilder: (context, index) {
-        return SwiftImage(
+        return GlideImage(
           imageUrls[index],
           fit: fit,
           borderRadius: borderRadius,
