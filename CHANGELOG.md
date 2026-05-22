@@ -1,3 +1,8 @@
+## 0.1.1
+
+- **Docs** README fully updated to `flutter_glide` branding — all widget names corrected to `GlideImage`, `GlideCircle`, `GlideBanner`, `GlideGrid`.
+- **Docs** Installation snippet updated to `flutter_glide: ^0.1.1`.
+
 ## 0.1.0
 
 - **New** `SwiftImageBanner` — full-width hero/banner image with aspect ratio, gradient/solid overlay, caption, `borderRadius`, and `onTap`.

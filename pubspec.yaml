@@ -4,7 +4,7 @@ description: >
   SVG, and file sources. Ships GlideImage, GlideCircle, GlideBanner,
   and GlideGrid with shimmer placeholders, initials avatars, rounded corners,
   colour tints, tap callbacks, and memory-cache hints — zero config required.
-version: 0.1.0
+version: 0.1.1
 homepage: https://github.com/abdulkhira/flutter_glide
 repository: https://github.com/abdulkhira/flutter_glide
 issue_tracker: https://github.com/abdulkhira/flutter_glide/issues

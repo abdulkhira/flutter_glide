@@ -44,7 +44,7 @@ local file path — and renders it consistently with a single widget API.
 
 ```yaml
 dependencies:
-  flutter_glide: ^0.1.0
+  flutter_glide: ^0.1.1
 ```
 
 ```dart
